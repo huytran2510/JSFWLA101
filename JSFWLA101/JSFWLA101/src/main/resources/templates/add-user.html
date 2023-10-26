@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/add.css}" type="text/css" rel="stylesheet">
+    <link href="/static/css/add.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div class="addUser" th:fragment="add">
+    <p>Add User</p>
+    <button class="close" type="button">X</button>
+    <hr>
+    <form th:action="@{/home/}" th:object="${user}" method="POST">
+        <table>
+            <tr>
+                <td>
+                    <label for="login">Login name</label>
+                </td>
+                <td>
+                    <input id="login" type="text" th:field="*{username}"> <span>(Alphanumeric)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Password">Password</label>
+                </td>
+                <td>
+                    <input id="Password" type="password" th:field="*{password}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="passwordconfirm">Password confirm</label>
+                </td>
+                <td>
+                    <input id="passwordconfirm" type="password" th:field="*{confirmPassword}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Name</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{firstname}">
+                    <input  type="text" th:field="*{lastname}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="mail">Mail address</label>
+                </td>
+                <td>
+                    <input id="mail" type="email" th:field="*{email}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Telephone number (outside line)</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{inPhone}"> -
+                    <span>(Byte numbers)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Telephone number (extension)</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{outPhone}">
+                    <span>(Hyphen (-) or single-byte number)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Telephone number (Mobile)</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{cellularPhone}"> -
+                    <span>(Byte numbers)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Mobile e-mail address</label>
+                </td>
+                <td>
+                    <input type="text" th:field="*{cellularEmail}"> <span>(Alphanumeric)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="">Mug shot</label>
+                </td>
+                <td>
+                    <button>Add File</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Department">Department</label>
+                </td>
+                <td>
+                    <p>Please add the department on the left side</p>
+                    <div id="Department">
+                        <div>
+                            <p>Department</p>
+                            <input type="hidden" id="selected-item" name="selectedItem" value="" th:field="*{postName}">
+                            <div id="department-list">
+                                <div>
+
+                                </div>
+                            </div>
+                            <button id="delete-button">Delete</button>
+                        </div>
+                        <div>
+                            <div>
+                                <p>Department List</p>
+                                <div id="list-container">
+                                    <div class="list-item">IT</div>
+                                    <div class="list-item">Marketing</div>
+                                    <div class="list-item">Business</div>
+                                </div>
+                            </div>
+                            <button id="add-button" type="button">Add</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Position</td>
+                <td>
+                    <Select th:field="*{eipPosition.name}" style="width: 100%;">
+                        <option value="">Not sepecified</option>
+                        <option value="Staff">Staff</option>
+                        <option value="HR">HR</option>
+                        <option value="Manage">Management</option>
+                    </Select>
+                </td>
+            </tr>
+            <tr>
+                <td>Administrative privileges</td>
+                <td>
+                    <input type="checkbox" name="" id=""> <label for="">To Administrator</label>
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Adding</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:src="@{/js/js.js}" type="text/javascript"></script>
+</body>
+</html>

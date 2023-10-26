@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="manage">
+    <a href="#">User management</a>
+    <hr>
+    <button class="addUser">To add a user</button>
+    <br>
+    <input class="search" type="text">
+    <button>Search</button>
+    <br>
+    <button>Remove</button>
+    <button>to enable</button>
+    <button>to disable</button>
+    <button>to change the order of the user</button>
+    <form th:action="@{/home/delete}" method="POST">
+        <table class="list">
+            <thead>
+            <tr>
+                <th><input type="checkbox" name="" id=""></th>
+                <th>State</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Department Name</th>
+                <th>Title</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="userRow : ${users}"  >
+                <th><input type="checkbox" name="selectedUsers" th:value="${userRow[0]}"></th>
+                <th>Effectiveness</th>
+                <th th:text="${userRow[0]}"></th>
+                <th th:text="${userRow[1]}"></th>
+                <th th:text="${userRow[2]}"></th>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit">Remove</button>
+        <button>to enable</button>
+        <button>to disable</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>
